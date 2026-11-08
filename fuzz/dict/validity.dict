@@ -1,0 +1,16 @@
+# validity.dict
+#
+# libFuzzer's recommended dictionary for the `validity` target, converted
+# from libFuzzer's printed form (C octal escapes)
+# to the dictionary file form, which reads only \\, \" and \xNN
+# escapes. Each entry's use count is on the comment line above it, in
+# libFuzzer's order.
+#
+#   cargo +nightly fuzz run validity -- -dict=dict/validity.dict
+
+# uses: 28759
+kw001="\xFF\xFF\xFF\xFF\xFF\xFF\xFF\x03"
+# uses: 23200
+kw002="\x00\x00\x00\x80"
+# uses: 21454
+kw003="\xFF\xFF"

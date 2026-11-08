@@ -1,0 +1,54 @@
+# codec_decode.dict
+#
+# libFuzzer's recommended dictionary for the `codec_decode` target, converted
+# from libFuzzer's printed form (C octal escapes)
+# to the dictionary file form, which reads only \\, \" and \xNN
+# escapes. Each entry's use count is on the comment line above it, in
+# libFuzzer's order.
+#
+#   cargo +nightly fuzz run codec_decode -- -dict=dict/codec_decode.dict
+
+# uses: 13260
+kw001="z\x11\x11\x11"
+# uses: 12943
+kw002="\x18\x00\x00\x00\x00\x00\x00\x00"
+# uses: 11825
+kw003="\x00\x00\x00\x0E"
+# uses: 11062
+kw004=")\x00\x00\x00\x00\x00\x00\x00"
+# uses: 7112
+kw005="\x00\x00\x00\x00\x00\x00\x00/"
+# uses: 6506
+kw006="\x00\x00\x05\xBD"
+# uses: 6104
+kw007="\xFF\xFF\x01B"
+# uses: 5859
+kw008="\xFE\x07\x00\x00"
+# uses: 5177
+kw009="\x00\x00\x00\x00\x00\x00\x00\x07"
+# uses: 4245
+kw010="\xFF\xFF\xFF\xFF\x1B\x1C\x1C\x1C"
+# uses: 3668
+kw011="\x1B\x01$\x11"
+# uses: 3442
+kw012="3\x00\x00\x00"
+# uses: 3164
+kw013="\x1A\x00\x00\x00\x00\x00\x00\x00"
+# uses: 2764
+kw014="\x0E\x00\x00\x00\x00\x00\x00\x00"
+# uses: 1934
+kw015="\x94\x01\x00\x00\x00\x00\x00\x00"
+# uses: 1502
+kw016="K\x02\x00\x00"
+# uses: 1247
+kw017="\x06\xBD"
+# uses: 915
+kw018="\x00\x00\x00\x00\x00\x00\x00\x11"
+# uses: 835
+kw019="\x81\x00\x00\x00"
+# uses: 818
+kw020="\x02\x00"
+# uses: 628
+kw021="\x07\x00\x00\x00\x00\x00\x00\x00"
+# uses: 564
+kw022="\xD2\x03"

@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: geometres
+abstract: >-
+  Exact, non-constructive computational geometry over f64 coordinates in
+  Rust. The crate provides validated geometry types, the complete DE-9IM
+  matrix and the OGC predicates derived from it, validation that reports
+  every invalidity, and measurements whose sign is certified and whose
+  magnitude carries a documented bound. Every sign decision is an exact
+  predicate from arithmetica, so no predicate returns a plausible wrong
+  answer on near-degenerate input. No public function returns a coordinate
+  that is not an input coordinate, and every simplification is vouched for
+  exactly or refused. The crate also covers convex and concave hulls,
+  Delaunay triangulation, coverage validation, Hausdorff and Frechet
+  distances, prepared polygonal masks, spatial indexing over polygon parts
+  and edges, and a deterministic binary codec that is exact on round trip.
+authors:
+  - family-names: Erlick
+    given-names: Justin
+    orcid: "https://orcid.org/0009-0006-5545-0158"
+version: 0.1.0
+date-released: 2026-11-08
+license: Apache-2.0
+keywords:
+  - computational geometry
+  - DE-9IM
+  - topological predicates
+  - exact arithmetic
+  - geometry validation
+  - Rust

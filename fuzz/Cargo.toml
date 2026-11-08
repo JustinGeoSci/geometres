@@ -1,0 +1,78 @@
+[package]
+name = "geometres-fuzz"
+version = "0.0.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "=0.4.13"
+
+# The crate under test, with its 3D types so the codec target covers them.
+[dependencies.geometres]
+path = ".."
+features = ["3d"]
+
+[[bin]]
+name = "codec_decode"
+path = "fuzz_targets/codec_decode.rs"
+doc = false
+
+[[bin]]
+name = "validity"
+path = "fuzz_targets/validity.rs"
+doc = false
+
+[[bin]]
+name = "collection_relate"
+path = "fuzz_targets/collection_relate.rs"
+doc = false
+
+[[bin]]
+name = "simplify_topology"
+path = "fuzz_targets/simplify_topology.rs"
+doc = false
+
+[[bin]]
+name = "dwithin"
+path = "fuzz_targets/dwithin.rs"
+doc = false
+
+[[bin]]
+name = "coverage"
+path = "fuzz_targets/coverage.rs"
+doc = false
+
+[[bin]]
+name = "delaunay"
+path = "fuzz_targets/delaunay.rs"
+doc = false
+
+[[bin]]
+name = "concave_hull"
+path = "fuzz_targets/concave_hull.rs"
+doc = false
+
+[[bin]]
+name = "hausdorff_frechet"
+path = "fuzz_targets/hausdorff_frechet.rs"
+doc = false
+
+[[bin]]
+name = "simplify_vw"
+path = "fuzz_targets/simplify_vw.rs"
+doc = false
+
+[[bin]]
+name = "coverage_simplify"
+path = "fuzz_targets/coverage_simplify.rs"
+doc = false
+
+[[bin]]
+name = "locate_on_line"
+path = "fuzz_targets/locate_on_line.rs"
+doc = false

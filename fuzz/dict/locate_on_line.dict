@@ -1,0 +1,56 @@
+# locate_on_line.dict
+#
+# libFuzzer's recommended dictionary for the `locate_on_line` target, converted
+# from libFuzzer's printed form (C octal escapes)
+# to the dictionary file form, which reads only \\, \" and \xNN
+# escapes. Each entry's use count is on the comment line above it, in
+# libFuzzer's order.
+#
+#   cargo +nightly fuzz run locate_on_line -- -dict=dict/locate_on_line.dict
+
+# uses: 2348
+kw001="\x01\x00\x00\x00"
+# uses: 1958
+kw002="\xFF\xFF\xFF\xFF"
+# uses: 1687
+kw003="\x00\x00\x00\x00"
+# uses: 1562
+kw004="\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF"
+# uses: 1505
+kw005="\x01\x00\x00\x00\x00\x00\x00\x08"
+# uses: 1505
+kw006="\xFF\xFF"
+# uses: 1433
+kw007="\x01R\xD1\x033x\x00\x00"
+# uses: 1229
+kw008="\x01\x00"
+# uses: 1174
+kw009="\x0C\x00"
+# uses: 1222
+kw010="\x03\x00\x00\x00\x00\x00\x00\x00"
+# uses: 902
+kw011="\xFF\x0B"
+# uses: 726
+kw012="\x7F\x00\x00\x00"
+# uses: 740
+kw013="c\x00\x00\x00\x00\x00\x00\x00"
+# uses: 466
+kw014="\x02\x04\x00\x00"
+# uses: 450
+kw015="\xFE\xFF\xFE>"
+# uses: 362
+kw016="\x03\x02"
+# uses: 332
+kw017="&\x00\x00\x00\x00\x00\x00\x00"
+# uses: 264
+kw018="!\x00\x00\x00\x00\x00\x00\x00"
+# uses: 195
+kw019="\x04\x00\x00\x00\x00\x00\x00\x00"
+# uses: 84
+kw020="\x01\x00\x00\x04"
+# uses: 55
+kw021="\x01\x00\x00\x00\x00\x00\x00\xB1"
+# uses: 58
+kw022="\\t\xD1E\x17]t\x01"
+# uses: 38
+kw023="\x00\x00"

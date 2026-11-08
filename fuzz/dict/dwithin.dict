@@ -1,0 +1,144 @@
+# dwithin.dict
+#
+# libFuzzer's recommended dictionary for the `dwithin` target, converted
+# from libFuzzer's printed form (C octal escapes)
+# to the dictionary file form, which reads only \\, \" and \xNN
+# escapes. Each entry's use count is on the comment line above it, in
+# libFuzzer's order.
+#
+#   cargo +nightly fuzz run dwithin -- -dict=dict/dwithin.dict
+
+# uses: 5198
+kw001="\x00\x00"
+# uses: 5105
+kw002="\x01\x00"
+# uses: 4924
+kw003="\x00\x00\xFF>"
+# uses: 4833
+kw004="\xFF\xFF\xFF\xFF"
+# uses: 4848
+kw005="?\xFE\xFF\xFF"
+# uses: 4809
+kw006="\x01\x00\x00\x00"
+# uses: 4578
+kw007="\x05\x00\x00\x00\x00\x00\x00\x00"
+# uses: 4542
+kw008="\x01\x00\x00\x00\x00\x00\x00\x07"
+# uses: 4708
+kw009="\x00\x00\x00\xD2"
+# uses: 4759
+kw010="\xFF\xFF"
+# uses: 4778
+kw011="\xDD\x01"
+# uses: 4750
+kw012="\xFF\xFF\xFE>"
+# uses: 4622
+kw013="\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF"
+# uses: 4778
+kw014="\x00\x00\x00\x00"
+# uses: 4888
+kw015="\x00\x00\x00\xCD"
+# uses: 4559
+kw016="\x00\x00\x00\x00\x00\x00\x00\x80"
+# uses: 4790
+kw017="\x02\x00"
+# uses: 4656
+kw018="=\xFE\xFF\xFF"
+# uses: 4545
+kw019="\xFF\xFF\xFF\xD0"
+# uses: 4430
+kw020="\x00\x00\x00\x00\x00\x00\x00\x00"
+# uses: 4565
+kw021="\xFF\xFF\xFF\xFF\xFF\xFF\xFF\x00"
+# uses: 4729
+kw022="\x00\x00\x00\x03"
+# uses: 4573
+kw023="\x00\x00\x00\xCE"
+# uses: 4536
+kw024="\x04\x00\x00\x00\x00\x00\x00\x00"
+# uses: 4676
+kw025="\x01\xEE"
+# uses: 4743
+kw026="\xD2\xFF\xFF\xFF"
+# uses: 4518
+kw027="\x033333334"
+# uses: 4601
+kw028=">\xFE\xFF\xFF"
+# uses: 4673
+kw029="\x1E\xFF\xFF\xFF"
+# uses: 4707
+kw030="\x02\x04"
+# uses: 4650
+kw031="\xCC\xFF\xFF\xFF"
+# uses: 4497
+kw032="\xFF\xFF\xFF\xFF\xFF\xFF\xFF&"
+# uses: 4447
+kw033="\xFF\xFF\xFF\xFF\xFF\xFF\xFF\x04"
+# uses: 4565
+kw034="\xFF\xFF\xFF\x7F"
+# uses: 4587
+kw035="\xCA\xFF\xFF\xFF"
+# uses: 4491
+kw036="\x00\x00\x04\x04"
+# uses: 4414
+kw037="\xFF\xFFo\xEC\x87\xDAM\x80"
+# uses: 4615
+kw038="\xEF\x00"
+# uses: 4603
+kw039="\xDE\x01"
+# uses: 4419
+kw040="\x07\xFF\xFF\xFF\xFF\xFF\xFF\xFE"
+# uses: 4417
+kw041="1\x00\x00\x00\x00\x00\x00\x00"
+# uses: 4434
+kw042="\xFF\xFF\xFF\xCF"
+# uses: 4573
+kw043="\xCE\xFF\xFF\xFF"
+# uses: 4392
+kw044="5333333\x03"
+# uses: 4495
+kw045="\x00\x04"
+# uses: 4407
+kw046="\x00\x00\x00\xEE"
+# uses: 4305
+kw047="\x09\x00\x00\x00\x00\x00\x00\x00"
+# uses: 4314
+kw048="\x08\x00\x00\x00\x00\x00\x00\x00"
+# uses: 4226
+kw049="\xEE\x00\x00\x00"
+# uses: 4498
+kw050="\xFF\xFF\xFF\x00"
+# uses: 3999
+kw051="\xFF\xFF\xFF\xCB"
+# uses: 3772
+kw052="\xFF\xFFo\xEC\x87\xD3U\x00"
+# uses: 3559
+kw053="\x81\x00\x00\x00\x00\x00\x00\x01"
+# uses: 3617
+kw054="\x01\x00\x00\x00\x00\x00\x00\x00"
+# uses: 3850
+kw055="\x02\x00\x00\x00"
+# uses: 3766
+kw056="\x03\x00"
+# uses: 3686
+kw057="\xEE\x00"
+# uses: 3526
+kw058="\x00\x00\x00\x04"
+# uses: 3155
+kw059="\x03\x04"
+# uses: 3116
+kw060="\x06fffffff"
+# uses: 2547
+kw061="\x00\x00\x00\x00\x00\x00\x00\x08"
+# uses: 2458
+kw062="\x00\x00\x01\xDE"
+# uses: 1683
+kw063="\xFF\xFF\xFF\xD1"
+# uses: 1728
+kw064="\x1E\x00\x00\x00\x00\x00\x00\x00"
+# uses: 1689
+kw065="\x04\x02"
+# uses: 1574
+kw066="\xDF\x01\x00\x00"
+# uses: 1279
+kw067="\x06\x00"

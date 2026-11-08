@@ -1,0 +1,14 @@
+# collection_relate.dict
+#
+# libFuzzer's recommended dictionary for the `collection_relate` target, converted
+# from libFuzzer's printed form (C octal escapes)
+# to the dictionary file form, which reads only \\, \" and \xNN
+# escapes. Each entry's use count is on the comment line above it, in
+# libFuzzer's order.
+#
+#   cargo +nightly fuzz run collection_relate -- -dict=dict/collection_relate.dict
+
+# uses: 2243
+kw001="\x00\x00"
+# uses: 190
+kw002="\xFF\xFF\xFF\xFF"

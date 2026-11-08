@@ -1,0 +1,65 @@
+geometres
+Copyright 2026 Justin Erlick
+
+Licensed under either of the Apache License, Version 2.0, or the MIT
+license, at your option.
+
+The algorithms are written from their published descriptions.
+
+The DE-9IM matrix and the named predicates follow:
+
+  OGC 06-103r4 (2011). OpenGIS Implementation Standard for Geographic
+  Information - Simple Feature Access - Part 1: Common Architecture,
+  version 1.2.1. Open Geospatial Consortium.
+
+Area and length are accumulated by the compensated dot product of:
+
+  Ogita, T., Rump, S.M., Oishi, S. (2005). Accurate Sum and Dot Product.
+  SIAM Journal on Scientific Computing, 26(6), 1955-1988.
+
+Simplification follows:
+
+  Ramer, U. (1972). An Iterative Procedure for the Polygonal Approximation
+  of Plane Curves. Computer Graphics and Image Processing, 1(3), 244-256.
+
+  Douglas, D.H., Peucker, T.K. (1973). Algorithms for the Reduction of the
+  Number of Points Required to Represent a Digitized Line or its
+  Caricature. The Canadian Cartographer, 10(2), 112-122.
+
+  Visvalingam, M., Whyatt, J.D. (1993). Line Generalisation by Repeated
+  Elimination of Points. The Cartographic Journal, 30(1), 46-51.
+
+The convex hull is Andrew's monotone chain:
+
+  Andrew, A.M. (1979). Another Efficient Algorithm for Convex Hulls in Two
+  Dimensions. Information Processing Letters, 9(5), 216-219.
+
+The Delaunay triangulation is built by incremental insertion, with a
+visibility walk to locate each point:
+
+  Bowyer, A. (1981). Computing Dirichlet Tessellations. The Computer
+  Journal, 24(2), 162-166.
+
+  Watson, D.F. (1981). Computing the n-dimensional Delaunay Tessellation
+  with Application to Voronoi Polytopes. The Computer Journal, 24(2),
+  167-172.
+
+  Devillers, O., Pion, S., Teillaud, M. (2002). Walking in a
+  Triangulation. International Journal of Foundations of Computer Science,
+  13(2), 181-199.
+
+The discrete Frechet distance follows:
+
+  Eiter, T., Mannila, H. (1994). Computing Discrete Frechet Distance.
+  Technical Report CD-TR 94/64, Christian Doppler Laboratory for Expert
+  Systems, TU Wien.
+
+The count of a polygon's interior components rests on Alexander duality:
+
+  Hatcher, A. (2002). Algebraic Topology. Cambridge University Press,
+  Theorem 3.44.
+
+The concave hull and coverage simplification follow the methods of the JTS
+Topology Suite (Martin Davis), ConcaveHull and CoverageSimplifier, as
+described in its documentation. JTS is licensed under the Eclipse Public
+License 2.0 and the Eclipse Distribution License 1.0.
