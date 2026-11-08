@@ -9,7 +9,7 @@ rust-version = "1.88"
 readme = "README.md"
 repository = "https://github.com/JustinGeoSci/geometres"
 documentation = "https://docs.rs/geometres"
-keywords = ["geometry", "computational-geometry", "de-9im", "exact", "gis"]
+keywords = ["geometry", "topology", "de-9im", "exact", "gis"]
 categories = ["science::geo", "mathematics"]
 
 [dependencies]
