@@ -31,9 +31,10 @@
 //! 1. **it has exactly one boundary edge**, and
 //! 2. **the vertex opposite that edge is not on the boundary.**
 //!
-//! The rule follows requires exactly two adjacent triangles and refuses a
-//! *connecting* triangle, one whose vertex opposite the boundary edge also lies
-//! on the boundary, "because this would create more than one result polygon."
+//! The rule follows JTS's `ConcaveHull`, which requires a removable triangle to
+//! have exactly two adjacent triangles and refuses a *connecting* triangle, one
+//! whose vertex opposite the boundary edge also lies on the boundary, as this would
+//! create more than one result polygon."
 //!
 //! The rule preserves the invariant that the region is a triangulated
 //! simple polygon containing every input point:
@@ -108,9 +109,9 @@ struct Broken;
 ///
 /// A valid polygon whose vertices are input points, containing every input
 /// point (certified exactly), eroded from the convex hull by the
-/// threshold's selection rule (module documentation). The result is
-/// canonical: it depends only on the point set, with its ring started at
-/// its lexicographically smallest vertex. Collinear boundary points stay
+/// threshold's selection rule (see the documentation of src/ops/concave_hull.rs).
+/// The result is canonical: it depends only on the point set, with its ring started
+/// at its lexicographically smallest vertex. Collinear boundary points stay
 /// on the ring (they are vertices of the region's boundary), so the
 /// ratio-1 result equals the convex hull as a region, with every boundary
 /// point as a vertex.

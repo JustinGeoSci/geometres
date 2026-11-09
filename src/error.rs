@@ -195,8 +195,7 @@ pub enum GeometryError {
         limit: usize,
     },
 
-    /// The rounding boundary refused a result: the rounded geometry failed
-    /// an exact vouch.
+    /// An operation refused its result: the result failed an exact vouch.
     ///
     /// Carries the same reason the unvouched entry point would attach, so a
     /// strict caller and a tolerant one see one diagnostic.
@@ -265,7 +264,7 @@ impl core::fmt::Display for GeometryError {
                 )
             }
             Self::Unvouched { reason, inputs } => {
-                write!(f, "rounded geometry failed the exact vouch: {reason:?}")?;
+                write!(f, "result failed the exact vouch: {reason:?}")?;
                 if inputs.is_empty() {
                     Ok(())
                 } else {

@@ -37,7 +37,7 @@
 //! | [`ValidityIssue::NonFiniteArea`] | `GeometryError::NonFiniteResult` |
 //! | [`ValidityIssue::DegenerateRing`] | `GeometryError::DegenerateRing` |
 //! | [`ValidityIssue::RingOrientation`] | `GeometryError::IncorrectWindingOrder`, `IncorrectHoleWindingOrder` |
-//! | [`ValidityIssue::SelfIntersection`] | none; the constructors do not test simplicity, and the overlay and simplify vouches do |
+//! | [`ValidityIssue::SelfIntersection`] | none; the constructors do not test simplicity, and [`validity_issues`] does |
 //!
 //! # The checks, between rings
 //!
@@ -274,8 +274,9 @@ pub enum ValidityIssue {
     /// Two parts of a multipolygon overlap: their interiors meet, or their
     /// boundaries share a stretch. The counterpart of
     /// `GeometryError::OverlappingParts`. `part` is the later part, `other`
-    /// the earlier. From [`validate_multipolygon`] and the multipolygon
-    /// checks of [`validity_issues`]; [`ring`](Self::ring) is 0.
+    /// the earlier. From [`validate_multipolygon`]; `MultiPolygon::new`
+    /// refuses the case, so [`validity_issues`] never reports it.
+    /// [`ring`](Self::ring) is 0.
     PartsOverlap {
         /// Index of the later part.
         part: usize,

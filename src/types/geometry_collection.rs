@@ -46,8 +46,8 @@ use crate::types::{Coord2d, Envelope, Geometry};
 ///
 /// - Every element is a valid geometry of its own type (its constructor
 ///   checked it), so every coordinate is finite.
-/// - The depth (see the module documentation) is at most
-///   [`MAX_NESTING`](Self::MAX_NESTING).
+/// - The depth (see the documentation of src/types/geometry_collection.rs)
+///   is at most [`MAX_NESTING`](Self::MAX_NESTING).
 #[derive(Clone, Debug, PartialEq)]
 pub struct GeometryCollection {
     geometries: Vec<Geometry>,
@@ -58,8 +58,8 @@ pub struct GeometryCollection {
 }
 
 impl GeometryCollection {
-    /// The deepest nesting a collection may have: a permanent contract (see
-    /// the module documentation).
+    /// The deepest nesting a collection may have: a permanent contract (see the
+    /// documentation of src/types/geometry_collection.rs)
     pub const MAX_NESTING: usize = 32;
 
     /// Construct a collection from its elements, in order.

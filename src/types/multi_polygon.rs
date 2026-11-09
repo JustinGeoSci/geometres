@@ -118,10 +118,9 @@ impl MultiPolygon {
     ///
     /// The check is the one `new` runs, exactly: a closed bounding-box
     /// prefilter, then exact ring placement. This entry point exists for a
-    /// caller that reports the pair in its own terms (the overlay vouch
-    /// names the parts by their extraction indices), and so needs the pair
-    /// without a `GeometryError` to unpack. No multipolygon is ever built
-    /// from unchecked parts.
+    /// caller that reports the pair in its own terms, such as indices of its
+    /// own, and so needs the pair without a `GeometryError` to unpack. No
+    /// multipolygon is ever built from unchecked parts.
     ///
     /// # Errors
     ///

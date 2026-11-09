@@ -71,36 +71,46 @@ use crate::ops::validate::ValidityIssue;
 /// invalid.
 ///
 /// Returned by the opt-in unvouched entry points of operations whose default
-/// entry point refuses instead (`simplify`, `offset`, `inset`). A caller that
-/// asks for an unvouched result is stating that it would rather have a broken
-/// answer it can inspect than no answer; the wrapper makes that choice explicit
-/// and keeps the broken value out of every signature that expects a valid one.
+/// entry point refuses instead, such as `simplify`. A caller that asks for an
+/// unvouched result is stating that it would rather have a broken answer it can
+/// inspect than no answer; the wrapper makes that choice explicit and keeps the
+/// broken value out of every signature that expects a valid one.
 ///
 /// # Invariants
 ///
 /// The inner value is unreachable without [`Unvouched::into_inner`] or
 /// [`Unvouched::inner`], and `Unvouched<T>` does not satisfy a signature
-/// expecting `T`. See the module documentation.
+/// expecting `T`. The documentation of src/types/result_wrappers.rs
+/// gives the reasoning.
 ///
 /// ```
-/// use geometres::types::{Coord2d, CoordSeq, LinearRing, Polygon, Unvouched, UnvouchedReason};
+/// use geometres::GeometryError;
+/// use geometres::types::{Coord2d, CoordSeq, LinearRing, MaybeVouched, Polygon, UnvouchedReason};
 ///
-/// let ring = LinearRing::new(CoordSeq::new(vec![
-///     Coord2d::new(0.0, 0.0),
-///     Coord2d::new(1.0, 0.0),
-///     Coord2d::new(1.0, 1.0),
-/// ]))?;
-/// let u = Unvouched::new(
-///     Polygon::new_simple(ring)?,
-///     UnvouchedReason::SelfIntersecting { edges: (0, 2) },
-/// );
+/// let ring = LinearRing::new(CoordSeq::new(
+///     [(6.0, 5.0), (5.0, 6.0), (2.0, 2.0), (5.0, 5.0), (4.0, 1.0)]
+///         .iter()
+///         .map(|&(x, y)| Coord2d::new(x, y))
+///         .collect(),
+/// ))?;
+/// let pentagon = Polygon::new_simple(ring)?;
+///
+/// // Simplifying at tolerance 1.5 drops (5, 6), and the edge (6, 5)-(2, 2)
+/// // then crosses the edge (5, 5)-(4, 1). The vouched entry point refuses.
+/// assert!(matches!(pentagon.simplify(1.5), Err(GeometryError::Unvouched { .. })));
+///
+/// // The unvouched entry point returns the invalid polygon, wrapped.
+/// let MaybeVouched::Unvouched(u) = pentagon.simplify_unvouched(1.5)? else {
+///     unreachable!("the simplified pentagon crosses itself");
+/// };
 ///
 /// // The reason is readable without unwrapping the value.
+/// assert_eq!(*u.reason(), UnvouchedReason::SelfIntersecting { edges: (0, 2) });
 /// assert!(u.reason().is_locally_invalid());
 ///
 /// // Taking the value is an explicit act.
 /// let _polygon = u.into_inner();
-/// # Ok::<(), geometres::GeometryError>(())
+/// # Ok::<(), GeometryError>(())
 /// ```
 #[derive(Clone, Debug, PartialEq)]
 pub struct Unvouched<T> {

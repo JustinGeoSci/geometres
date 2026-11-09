@@ -371,7 +371,8 @@ impl Relation {
         self.matrix
     }
 
-    /// `T*F**FFF*`: the same point set. See [`IntersectionMatrix::equals`].
+    /// `T*F**FFF*`: the same point set. Two empty geometries are also equal.
+    /// See [`IntersectionMatrix::equals`].
     #[must_use]
     pub fn equals(&self) -> bool {
         self.matrix.equals()
@@ -443,7 +444,9 @@ impl IntersectionMatrix {
     ///
     /// Both interiors must intersect (`II ≠ Empty`) and no part of either,
     /// interior or boundary, may lie outside the other (`IE`, `BE`, `EI`,
-    /// `EB` all `Empty`). Two empty geometries are equal as point sets.
+    /// `EB` all `Empty`). Two empty geometries are equal as point sets, so
+    /// this method returns `true` for them, although their matrix,
+    /// `FFFFFFFF2`, does not match the pattern.
     #[must_use]
     pub fn equals(&self) -> bool {
         // Two empty geometries are equal as point sets. Their matrix,

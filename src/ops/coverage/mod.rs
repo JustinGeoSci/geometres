@@ -73,6 +73,7 @@ mod validate;
 mod tests;
 
 use crate::error::GeometryError;
+use crate::predicates::Relatable;
 use crate::types::{MultiLineString, MultiPolygon, Polygon};
 
 // ===========================================================================
@@ -294,8 +295,6 @@ pub struct Polygonized {
 /// [`GeometryError::NotNoded`], naming the first offending pair of
 /// segments, if the linework is not noded. Node the input first with a
 /// constructive operation.
-pub fn polygonize_noded(
-    lines: &impl crate::predicates::Relatable,
-) -> Result<Polygonized, GeometryError> {
+pub fn polygonize_noded(lines: &impl Relatable) -> Result<Polygonized, GeometryError> {
     polygonize::run(crate::predicates::borrowed(lines))
 }

@@ -33,7 +33,9 @@
 //! assembled field-by-field from bytes. `Point`'s field is private so that
 //! deserialization cannot bypass `Point::new`, and this decoder honors that.
 //! **A malformed or hostile byte stream produces a [`CodecError`], never an
-//! invalid geometry and never a panic.**
+//! invalid geometry and never a panic.** `Coord2d` and `CoordSeq` are
+//! coordinate values rather than geometries: like their constructors, their
+//! decoders accept any `f64`, NaN and infinity included.
 //!
 //! **No I/O.** Encoding appends to a `Vec<u8>` and decoding reads a `&[u8]`;
 //! nothing here uses `std::io`. The codec allocates, and like the rest of the
@@ -85,7 +87,6 @@
 //! | `Location` | `u8`: 0 interior, 1 boundary, 2 exterior |
 //! | `Dimension` | `i8`: −1 empty, 0 point, 1 line, 2 area (the OGC values) |
 //! | `IntersectionMatrix` | nine `Dimension` values in row-major DE-9IM order |
-//! | `TessellateMethod` | `u8`: 0 square, 1 hex, 2 hex-trans, 3 diamond |
 //!
 //! The `Geometry` variant byte reuses the top-level [`tag`] values, so one tag
 //! space serves both.
@@ -186,20 +187,13 @@ pub mod tag {
     pub const DIMENSION: u8 = 0x0C;
     /// `Location`
     pub const LOCATION: u8 = 0x0D;
-    // 0x0E was `FaceLabel`, the flood fill's per-face output. Both were
-    // removed: with the fill gone, nothing produced a `FaceLabel`, and a
-    // type the codec could round-trip but nothing could create is dead
-    // weight in the format. The number is left unassigned
-    // rather than reused, so a document written by an earlier build decodes as
-    // an unknown tag instead of silently as an `Envelope`.
+    // 0x0E is unassigned and stays so: a document carrying it
+    // decodes as an unknown tag rather than as another type.
     /// `Envelope`
     pub const ENVELOPE: u8 = 0x0F;
-    /// `TessellateMethod`, reserved here so that no type in this crate can
-    ///  take the value, and so that a document written by an earlier build
-    ///  still decodes.
+    /// Reserved: no type in this crate takes this value.
     pub const TESSELLATE_METHOD: u8 = 0x10;
-    /// `GeometryCollection`. Additive: no earlier document
-    /// used the value, so [`FORMAT_VERSION`](super::FORMAT_VERSION) stays 1.
+    /// `GeometryCollection`.
     pub const GEOMETRY_COLLECTION: u8 = 0x11;
 
     /// `Coord3d`

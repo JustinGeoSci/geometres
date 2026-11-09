@@ -68,9 +68,11 @@ use crate::types::{
 /// # Pattern parsing
 ///
 /// The [`from_pattern`](IntersectionMatrix::from_pattern) constructor parses
-/// the same format, with `*` (wildcard) matching any dimension. Wildcards are
-/// only meaningful for pattern matching in tests; a matrix produced by
-/// [`compute`](IntersectionMatrix::compute) never contains wildcards.
+/// the same format and also accepts `*`, which it stores as `Empty`. It
+/// builds a concrete matrix rather than a pattern: the crate has no pattern
+/// matching, so `*` and `F` produce the same matrix, and a pattern that uses
+/// `T` does not parse. A matrix produced by
+/// [`compute`](IntersectionMatrix::compute) never contains `*`.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct IntersectionMatrix {
     /// Interior(A) ∩ Interior(B)
@@ -112,7 +114,7 @@ impl IntersectionMatrix {
 
     /// Computes the DE-9IM matrix for a pair of heterogeneous geometries.
     ///
-    /// Every ordered pair of the six [`Geometry`] variants is supported. The
+    /// Every ordered pair of the seven [`Geometry`] variants is supported. The
     /// pair is reduced to one of three operand classes, and the matrix comes
     /// from the first row that applies; the reversed order uses
     /// [`swap_ab`](Self::swap_ab):
@@ -138,11 +140,11 @@ impl IntersectionMatrix {
     ///
     /// # Errors
     ///
-    /// No current pair fails. Every geometry type validates finiteness when
-    /// it is built (`Point::new`, and the line and polygon constructors), so a
-    /// non-finite coordinate, which would make every orientation test report
-    /// "collinear" and produce a plausible-looking wrong matrix, cannot reach
-    /// this function.
+    /// No current pair fails except as below. Every geometry type validates
+    /// finiteness when it is built (`Point::new`, and the line and polygon
+    /// constructors), so a non-finite coordinate, which would make every
+    /// orientation test report "collinear" and produce a plausible-looking
+    /// wrong matrix, cannot reach this function.
     ///
     /// [`GeometryError::CollectionElementsOverlap`] if either operand is a
     /// `GeometryCollection` whose polygonal leaves overlap: `relate` accepts
@@ -245,7 +247,7 @@ impl IntersectionMatrix {
     /// | `0`  | `Point` |
     /// | `1`  | `Line` |
     /// | `2`  | `Area` |
-    /// | `*`  | wildcard, stored as `Empty`; semantics handled by the caller |
+    /// | `*`  | `Empty`, the same as `F` (the crate has no pattern matching) |
     ///
     /// # Errors
     ///

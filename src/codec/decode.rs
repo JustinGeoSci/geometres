@@ -56,6 +56,12 @@ pub trait Decode: Sized + Encode {
 /// - [`CodecError::UnsupportedVersion`]: the version byte is not
 ///   [`FORMAT_VERSION`].
 /// - [`CodecError::UnexpectedTag`]: the document is not a `T`.
+/// - [`CodecError::UnknownVariant`]: a `Geometry` variant byte is not a
+///   known type.
+/// - [`CodecError::InvalidEnumValue`]: a `Location` or `Dimension` byte is
+///   out of range.
+/// - [`CodecError::CountOverflow`]: a count does not fit in `usize`.
+/// - [`CodecError::NestingTooDeep`]: collections nest past the limit.
 /// - [`CodecError::Geometry`]: the bytes describe an invalid geometry.
 /// - [`CodecError::TrailingBytes`]: bytes remained after a complete value.
 pub fn decode<T: Decode>(bytes: &[u8]) -> Result<T, CodecError> {

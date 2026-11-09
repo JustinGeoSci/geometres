@@ -141,12 +141,12 @@ fn join(pieces: &[Piece], out: &mut Vec<LineString>) {
 /// The paths `a` and `b` share, split by whether they run the same way.
 ///
 /// For each segment of `a`, the stretches it shares with segments of `b`
-/// (collinear and overlapping in more than a point, decided exactly, see the
-/// module documentation) are found, unioned where `b` overlaps itself, and
-/// classed by whether `b` runs the same way along them. Stretches of one
-/// class that meet at a vertex of `a`, consecutive along `a`, are joined
-/// into one line string. Output lines are oriented as `a` runs, and listed
-/// in `a`'s order. A single shared point is not a path and is not reported.
+/// (collinear and overlapping in more than a point, decided exactly, see
+/// the documentation of src/ops/shared.rs) are found, unioned where `b`
+/// overlaps itself, and classed by whether `b` runs the same way along them.
+/// Stretches of one class that meet at a vertex of `a`, consecutive along `a`,
+/// are joined into one line string. Output lines are oriented as `a` runs, and
+/// listed in `a`'s order. A single shared point is not a path and is not reported.
 ///
 /// The inputs are taken as line strings, not as point sets: where `a` runs
 /// over the same stretch more than once, each pass is reported, with the

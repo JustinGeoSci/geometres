@@ -72,8 +72,8 @@ pub fn polygon_length(polygon: &Polygon) -> f64 {
 /// sum. Points and lines contribute no area.
 ///
 /// **Overlapping elements count twice**: a collection imposes no condition
-/// between its elements. The module documentation gives the sign argument
-/// (zero exactly when there is no polygon) and the bound.
+/// between its elements. The documentation of src/ops/measure.rs gives the
+/// sign argument (zero exactly when there is no polygon) and the bound.
 #[must_use]
 pub fn collection_area(collection: &GeometryCollection) -> f64 {
     let mut acc = Accum::new();
@@ -99,9 +99,9 @@ pub fn collection_area(collection: &GeometryCollection) -> f64 {
 /// every depth: each line is one term ([`length`]) and each polygon one term
 /// ([`polygon_length`], every ring). Points contribute nothing.
 ///
-/// **Overlapping elements count twice.** The module documentation gives the
-/// sign argument (zero exactly when there is no line or polygon) and the
-/// accuracy, which is measured, not proven.
+/// **Overlapping elements count twice.** The documentation of src/ops/measure.rs
+/// gives the sign argument (zero exactly when there is no line or polygon) and
+/// the accuracy, which is measured, not proven.
 #[must_use]
 pub fn collection_length(collection: &GeometryCollection) -> f64 {
     let mut acc = Accum::new();

@@ -65,7 +65,8 @@ use crate::types3d::LinearRing3d;
 ///   the Z component of its Newell normal must be negative.
 ///
 /// The sign of that Z component is **certified**: it is the sign of the
-/// exact area of the ring's XY projection (see the module documentation).
+/// exact area of the ring's XY projection (see the documentation of
+/// src/types3d/polygon3d.rs).
 ///
 /// Tilted planes are a limitation. This convention is tied to the global +Z
 /// axis, **not** to the polygon's own plane. If the geometry lies in a tilted

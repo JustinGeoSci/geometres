@@ -197,8 +197,8 @@ impl Polygon {
 
 /// `true` if `ring` is degenerate: its **exact signed area is zero**. This is
 /// the test `Polygon::new` applies to every ring. Exposed so that a caller
-/// assembling rings into polygons (the overlay vouch) can name the ring that
-/// fails, which `GeometryError::DegenerateRing` does not.
+/// assembling rings into polygons can name the ring that fails, which
+/// `GeometryError::DegenerateRing` does not.
 ///
 /// A permanent contract: exactly the rings whose vertices are all collinear,
 /// or whose lobes cancel exactly, are degenerate. No tolerance is involved,

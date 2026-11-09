@@ -28,8 +28,8 @@ use crate::exact::kernel::{first_self_contact, on_segment, segments_properly_cro
 use crate::predicates::{Borrowed, Relatable, borrowed};
 use crate::types::{Coord2d, Geometry, LineString, MultiLineString, MultiPoint, Polygon};
 
-/// `true` if `g` is simple in the OGC sense; the module documentation gives
-/// the rule for each type.
+/// `true` if `g` is simple in the OGC sense; the documentation of src/ops/simple.rs
+/// gives the rule for each type.
 ///
 /// A collection is walked without recursion; each element is judged on its
 /// own.

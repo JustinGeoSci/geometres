@@ -45,8 +45,9 @@ impl LinearRing3d {
     ///
     /// - [`GeometryError::NonFiniteCoordinate`] if any component is NaN or
     ///   infinite; `axis` is `0` for x, `1` for y, `2` for z.
-    /// - [`GeometryError::InsufficientVertices`] if fewer than 3 distinct
-    ///   vertices remain after stripping.
+    /// - [`GeometryError::InsufficientVertices`] if fewer than 3 vertices
+    ///   remain after stripping, counted before repeats are checked (so
+    ///   `[a, b, b]` is a [`ConsecutiveDuplicateVertices`] error).
     /// - [`GeometryError::ConsecutiveDuplicateVertices`] if any consecutive
     ///   pair, including the wrap-around pair, is identical.
     pub fn new(coords: CoordSeq3d) -> Result<Self, GeometryError> {

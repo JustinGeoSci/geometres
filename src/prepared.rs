@@ -212,8 +212,12 @@ pub struct PreparedPolygonal {
 }
 
 impl PreparedPolygonal {
-    /// Prepares `geom`: the simplicity verdict, the part boxes and index, and the
-    /// edge index.
+    /// Prepares `geom`. A mask of more than 64 ring edges takes its simplicity
+    /// verdict now; when every ring is simple it builds the part boxes, the
+    /// part index and the edge index, and otherwise every query runs the
+    /// unprepared operation. A mask of 64 edges or fewer builds no index and
+    /// takes the verdict on the first query that needs it. The answers are the
+    /// same in every case.
     ///
     /// # Errors
     ///

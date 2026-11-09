@@ -17,7 +17,7 @@
 //! | [`signed_area_ring`], [`signed_area`], [`area`] | Computed as if in twice the working precision (Ogita-Rump-Oishi `Dot2`); see `area.rs` for the bound |
 //! | [`length`], [`ring_perimeter`], [`perimeter`], [`edge_length`], [`polygon_length`] | Compensated sum of `hypot` edge lengths; no proven bound, accuracy measured |
 //! | [`collection_area`], [`collection_length`] | Sum over the collection's elements (overlaps count twice); certified zero exactly when there is nothing to measure; bound composed from the terms'; see `ops::measure` |
-//! | [`simplify`] (methods on `Polygon`, `MultiPolygon`, `LineString`, `MultiLineString`) | Vertex choice is `f64`; the result is **vouched exactly** or refused; see `ops::simplify` |
+//! | [`simplify`] (methods on `Polygon`, `MultiPolygon`, `LineString`, `MultiLineString`) | Vertex choice is `f64`; a polygonal result is **vouched exactly** or refused, and a lineal result needs only its constructor's checks, since a line string may cross itself; see `ops::simplify` |
 //! | [`simplify_vw()`] | Vertex choice is `f64` (effective areas, a selection rule); the result is **vouched exactly** by the constructors and `validity_issues`, or refused; see `ops::simplify_vw` |
 //! | [`simplify_preserve_topology`] (and its `_unvouched` form) | Vertex choice is `f64`; every topological check is **exact**, and the result is vouched exactly; see [`simplify_topology`] |
 //! | [`validate()`], [`validate_line`], [`validate_multipolygon`], [`is_valid`], [`validity_issues`] | **Exact**: certified area sign for orientation, exact self-contact and ring placement by index, exact touch graph for a disconnected interior; every issue reported, none constructed; see `ops::validate` |

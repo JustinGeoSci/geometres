@@ -342,9 +342,9 @@ fn normalize_collection(gc: &GeometryCollection) -> GeometryCollection {
 ///   first coordinate first (an empty element before every other of its
 ///   type).
 ///
-/// The order is exact (the module documentation): ties under `==`, which
-/// include `-0.0` against `0.0`, fall to the next key and then to the
-/// original position. `normalize` is idempotent. Every coordinate of the
+/// The order is exact (see the documentation of src/ops/basic.rs): ties under
+/// `==`, which include `-0.0` against `0.0`, fall to the next key and then to
+/// the original position. `normalize` is idempotent. Every coordinate of the
 /// result is a coordinate of `g`, bit for bit.
 #[must_use]
 pub fn normalize(g: &Geometry) -> Geometry {

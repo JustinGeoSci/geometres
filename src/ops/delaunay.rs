@@ -635,10 +635,10 @@ fn fan_face(mesh: &Mesh<'_>, members: &[u32], out: &mut Vec<[u32; 3]>) -> Result
 /// whose circumcircles contain no input point strictly inside.
 ///
 /// Canonical: the triangulation, and the order everything is reported in,
-/// depend only on the set of points, not on their order in the input (see
-/// the module documentation for the cocircular tie rule). Each triangle is
-/// counterclockwise and starts at its lexicographically smallest vertex;
-/// triangles are sorted by their vertex coordinates; edges are reported
+/// depend only on the set of points, not on their order in the input (the
+/// documentation of src/ops/delaunay.rs gives the cocircular tie rule). Each
+/// triangle is counterclockwise and starts at its lexicographically smallest
+/// vertex; triangles are sorted by their vertex coordinates; edges are reported
 /// with their lexicographically smaller endpoint first, sorted.
 #[derive(Clone, Debug)]
 pub struct Triangulation {
@@ -710,10 +710,10 @@ impl Triangulation {
 
 /// The Delaunay triangulation of the distinct vertices of `g`.
 ///
-/// Exact and canonical; see the module documentation for the predicates,
-/// the cocircular tie rule and the degenerate cases. Duplicate points are
-/// used once (`-0.0` and `0.0` are the same point, as everywhere in this
-/// crate); an input with no coordinates gives the empty triangulation.
+/// Exact and canonical; the documentation of src/ops/delaunay.rs gives the
+/// predicates, the cocircular tie rule and the degenerate cases. Duplicate
+/// points are used once (`-0.0` and `0.0` are the same point, as everywhere
+/// in this crate); an input with no coordinates gives the empty triangulation.
 ///
 /// # Errors
 ///
@@ -721,7 +721,7 @@ impl Triangulation {
 ///   distinct points, never a truncation.
 /// - [`GeometryError::Unvouched`] with [`UnvouchedReason::NotDelaunay`] if
 ///   the certification re-check fails, which is expected never to occur
-///   (module documentation).
+///   (see src/ops/delaunay.rs).
 pub fn delaunay(g: &impl Relatable) -> Result<Triangulation, GeometryError> {
     let mut seen: HashSet<(u64, u64)> = HashSet::new();
     let mut points: Vec<Coord2d> = Vec::new();

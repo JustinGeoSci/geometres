@@ -105,8 +105,9 @@ impl LinearRing {
     ///
     /// - [`GeometryError::NonFiniteCoordinate`] if any coordinate value is
     ///   NaN or infinite.
-    /// - [`GeometryError::InsufficientVertices`] if fewer than 3 distinct
-    ///   vertices remain after stripping.
+    /// - [`GeometryError::InsufficientVertices`] if fewer than 3 vertices
+    ///   remain after stripping, counted before repeats are checked (so
+    ///   `[a, b, b]` is a [`ConsecutiveDuplicateVertices`] error).
     /// - [`GeometryError::ConsecutiveDuplicateVertices`] if any non-closing
     ///   consecutive pair is identical (or the wrap-around pair after the
     ///   closing vertex strip).

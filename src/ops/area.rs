@@ -74,8 +74,8 @@ where
 /// ring and over all of a polygon's rings respectively, so the polygon-level
 /// net area has an exact sign too. That matters for the thin-annulus case,
 /// where a large exterior and a nearly equal hole cancel to a net area below
-/// the rounding of the compensated sum; `area` asserts on the sign of that
-/// result.
+/// the rounding of the compensated sum; `area` returns that certified sign
+/// unchanged.
 fn certified_twice_area<'a, I>(rings: I) -> f64
 where
     I: Iterator<Item = &'a LinearRing> + Clone,
@@ -143,8 +143,10 @@ where
 /// ring (see `certified_twice_area` in this module).
 ///
 /// `Polygon::new` verifies that every hole lies inside the exterior and that
-/// holes are interior-disjoint, so the exact net area of any valid `Polygon`
-/// is strictly positive, and with the certified sign this function returns a
+/// holes are interior-disjoint, so the exact net area of a `Polygon` that
+/// passes its checks is positive, except where holes tile the exterior along
+/// collinear shared edges (the placement check's one documented limit), where
+/// it is exactly zero. With the certified sign, this function returns a
 /// non-negative value for every valid polygon. A polygon with a
 /// self-crossing ring (constructible, invalid) can have a negative net sum
 /// ([`area`]). It can be non-finite on overflow.
@@ -165,9 +167,10 @@ pub fn signed_area(polygon: &Polygon) -> f64 {
 /// enclose more signed area than the exterior. Its net signed sum is then
 /// negative, and that sum is returned rather than made positive or panicked
 /// on. A negative area is a visible sign of an invalid input, which
-/// [`validate()`](super::validate()) names. An exact
-/// zero is reachable too, through the one documented limit of the placement
-/// check (holes that tile the exterior along collinear shared edges).
+/// [`validate()`](super::validate()) names. An exact zero is reachable too:
+/// holes that tile the exterior along collinear shared edges pass the
+/// placement check, which is that check's one documented limit, and leave a
+/// net area of exactly zero.
 pub fn area(polygon: &Polygon) -> f64 {
     signed_area(polygon)
 }

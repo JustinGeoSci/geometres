@@ -47,8 +47,8 @@ fn chain<'a>(pts: impl Iterator<Item = &'a Coord2d>) -> Vec<Coord2d> {
 ///   are the hull's corners: input vertices where the hull turns strictly
 ///   left, starting at the lexicographically smallest.
 ///
-/// Distinct means unequal under `==`. See the module documentation for why
-/// every decision is exact.
+/// Distinct means unequal under `==`. The documentation of src/ops/hull.rs
+/// explains why every decision is exact.
 ///
 /// # Errors
 ///
